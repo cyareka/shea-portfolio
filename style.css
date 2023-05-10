@@ -53,12 +53,13 @@
 #nav [class*="col-"] {
     height: inherit;
     padding: 0px; 
-    background: #0e0e0e;
+    background-color: #0e0e0eac;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
 }
 
-
 #sticky-top {
-    background-color: #0e0e0e;
+    background-color: #0e0e0eac;
 }
 
 #sticky-top ul {
@@ -81,13 +82,29 @@
 #sticky-top a {
     color: #BABABA;
     text-decoration: none;
+
+    display: inline-block;
+    position: relative;
 }
 
-#sticky-top a:hover {
-    color: #0e0e0e;
-    background-color: #BABABA;
-    border-radius: 2px;
+#sticky-top a:after {    
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #A4AC86;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
 }
+
+#sticky-top a:hover:after { 
+    width: 100%; 
+    left: 0; 
+}
+
 /* NAVIGATION END */
 
 
@@ -112,7 +129,7 @@
     padding: 0;
 }
 
-.intro p, .intro h1, .banner p, #about h1 {
+p, h1 {
     color: #E0E0E0;
     line-height: 1.5;
 }
@@ -127,7 +144,7 @@
     line-height: 1;
 }
 
-.intro h1 span, #about h1 span {
+span {
     color: #A4AC86;
 }
 
@@ -137,18 +154,57 @@
 #about {
     background-color: #0e0e0e;
     clear: both;
+    float: left;
     height: auto;
     overflow: auto;
 }
 
+#about .col-8 {
+    margin: 0;
+}
+
 #about h1 {
-    padding-top: 50px;
+    padding-top: 80px;
 }
 
-#id {
+#profile {
+    width: 350px;
+    height: auto;
 
-    
+    border-radius: 10px;
 }
+
+.box {
+    background-color: #181818;
+    border-radius: 8px;
+    overflow: auto;
+}
+
+.box li {
+    list-style-type: none;
+    float: left;
+}
+
+.box img {
+    padding: 15px;
+}
+
+
+
+/* PROJECTS START */
+#projects {
+    background: linear-gradient(#0E0E0E, #1A1C15, #1E1915);
+    height: auto;
+
+}
+
+
+/* PROJECTS END */
+
+/* CONTACTS START */
+
+
+/* CONTACTS END*/
 
 /* GENERAL START */
 /* GENERAL END */
