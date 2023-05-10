@@ -5,7 +5,6 @@
     margin: 0;
     font-family: 'JetBrains Mono';
     scroll-behavior: smooth;
-
 }
 
 #container {
@@ -13,25 +12,56 @@
     margin: 0 auto;
 }
 
-/* NAVIGATION START*/
-#nav {
-    position: fixed;
-    width: 100%;
+[class*="col-"] { float: left; padding: 15px; }
+
+@media only screen and (max-width: 767px) {
+    [class*="col-"]{ width: 100%; padding:0px; }
+    #nav .col-2 { width: 0%; }     
 }
 
+@media only screen and (min-width: 768px) {
+    .col-1 { width: 8.33%; }
+    .col-2 { width: 16.66%; }
+    .col-3 { width: 25%; }
+    .col-4 { width: 33.33%; }
+    .col-5 { width: 41.66%; }
+    .col-6 { width: 50%; }
+    .col-7 { width: 58.33%; }
+    .col-8 { width: 66.66%; }
+    .col-9 { width: 75%; }
+    .col-10 { width: 83.33%; }
+    .col-11 { width: 91.66%; }
+    .col-12 { width: 100%; }
+}
+
+/* NAVIGATION START*/
 #gradient-bar {
     background: linear-gradient(to right, #333D29, #A4AC86, #582F0E);
     color: #0e0e0e;
     height: 7px;
 }
 
+#nav {
+    position: fixed;
+    width: 100%;
+    height: 70px;
+}
+
+#nav [class*="col-"] {
+    height: inherit;
+    padding: 0px; 
+    background: #0e0e0e;
+}
+
+
 #sticky-top {
-    height: auto;
     background-color: #0e0e0e;
 }
 
 #sticky-top ul {
-    padding: 10px 0 10px 0;
+    height: 99%;
+    padding: 0;
+    margin: 0;
 
     display: flex;
     justify-content: center;
@@ -40,8 +70,9 @@
 
 #sticky-top li {
     list-style: none;
-    margin: 0;
-    padding: 20px;
+    height: 99%;
+    padding: 20px 10px 30px 10px;
+    float: left;
 }
 
 #sticky-top a {
@@ -62,29 +93,17 @@
     background: linear-gradient(to right, #14160D, #231C16);
     height: auto;
     padding-top: 80px;
-
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-}
-
-.home-txt {
-    display: flex;
-
-    width: 500px;
-    flex-flow: column;
-    justify-content: center;
-    align-items: flex-start;
+    overflow: auto;
 }
 
 #icon {
-    margin-top: 90px;
-    width: 450px;
-    height: 450px;
+    margin-top: 100px;
+    width: 400px;
+    height: 400px;
 }
 
 .intro {
-    margin-top: 70px;
+    margin-top: 50px;
 }
 
 .intro p, .intro h1, .banner p, #about h1 {
@@ -106,14 +125,6 @@
     color: #A4AC86;
 }
 
-#socials {
-    display: flex;
-    justify-content: flex-start;
-}
-
-#socials a {
-    padding-right: 20px;
-}
 /* HOME END */
 
 /* ABOUT ME START */
@@ -122,6 +133,11 @@
     clear: both;
     height: auto;
     overflow: auto;
+}
+
+#about h1 {
+    margin-top: 70px;
+    clear: both;
 }
 
 /* GENERAL START */
