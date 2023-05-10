@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'JetBrains Mono';
+    scroll-behavior: smooth;
+
+}
+
+#container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* NAVIGATION START*/
+#nav {
+    position: fixed;
+    width: 100%;
+}
+
+#gradient-bar {
+    background: linear-gradient(to right, #333D29, #A4AC86, #582F0E);
+    color: #0e0e0e;
+    height: 7px;
+}
+
+#sticky-top {
+    height: auto;
+    background-color: #0e0e0e;
+}
+
+#sticky-top ul {
+    padding: 10px 0 10px 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#sticky-top li {
+    list-style: none;
+    margin: 0;
+    padding: 20px;
+}
+
+#sticky-top a {
+    color: #BABABA;
+    text-decoration: none;
+}
+
+#sticky-top a:hover {
+    color: #0e0e0e;
+    background-color: #BABABA;
+    border-radius: 2px;
+}
+/* NAVIGATION END */
+
+
+/* HOME START */
+#home {
+    background: linear-gradient(to right, #14160D, #231C16);
+    height: auto;
+    padding-top: 80px;
+
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.home-txt {
+    display: flex;
+
+    width: 500px;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#icon {
+    margin-top: 90px;
+    width: 450px;
+    height: 450px;
+}
+
+.intro {
+    margin-top: 70px;
+}
+
+.intro p, .intro h1, .banner p, #about h1 {
+    color: #E0E0E0;
+    line-height: 1.5;
+}
+
+.intro p, .banner p {
+    padding: 1.1em 0;
+    font-size: 18px;
+}
+
+.intro h1, #about h1, #projects h1, #contact h1 {
+    font-size: 64px;
+    line-height: 1;
+}
+
+.intro h1 span, #about h1 span {
+    color: #A4AC86;
+}
+
+#socials {
+    display: flex;
+    justify-content: flex-start;
+}
+
+#socials a {
+    padding-right: 20px;
+}
+/* HOME END */
+
+/* ABOUT ME START */
+#about {
+    background-color: #0e0e0e;
+    clear: both;
+    height: auto;
+    overflow: auto;
+}
+
+/* GENERAL START */
+/* GENERAL END */
