@@ -3,7 +3,7 @@
 * {
     box-sizing: border-box;
     margin: 0;
-    font-family: 'JetBrains Mono';
+    font-family: 'JetBrains Mono', monospace;
     scroll-behavior: smooth;
 }
 
@@ -15,11 +15,39 @@
 [class*="col-"] { float: left; padding: 15px; }
 
 @media only screen and (max-width: 767px) {
-    [class*="col-"]{ width: 100%; padding:0px; }
+    [class*="col-"]{
+        width: 100%;
+        padding: 0;
+    }
+
     #nav .col-2 { width: 0%; }  
     .icon { display: none; }
     .home-txt { text-align: center; }
-    .socials { display: flex; flex-flow: row, nowrap; margin-bottom: 80px; align-items: center; justify-content: space-evenly; }
+    .socials {
+        display: flex;
+        flex-flow: row, nowrap; 
+        margin-bottom: 80px; 
+        align-items: center; 
+        justify-content: center;
+    }
+    .socials a { padding: 0 10px; }
+
+    .banner #profile {
+        width: 300px;
+        height: 250px;
+    }
+
+    .profile {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0;
+
+        object-fit: cover;
+        object-position: 0 30%;
+    }
+
+    #about { padding: 0 30px; }
 }
 
 @media only screen and (min-width: 768px) {
@@ -80,7 +108,7 @@
 }
 
 #sticky-top a {
-    color: #BABABA;
+    color: #e0e0e0;
     text-decoration: none;
 
     display: inline-block;
@@ -89,7 +117,7 @@
 
 #sticky-top a:after {    
     background: none repeat scroll 0 0 transparent;
-    bottom: 0;
+    bottom: 3;
     content: "";
     display: block;
     height: 2px;
@@ -105,13 +133,50 @@
     left: 0; 
 }
 
+.login-wrapper {
+    width: auto;
+    margin: 0;
+  }
+  
+button {
+    padding: 4px 10px;
+    border: 0;
+    outline: 0;
+    color: #e0e0e0;
+    background: #582F0E;
+    font-size: 16px;
+    text-transform: lowercase;
+    border-radius: 4px;
+    &:active {
+      margin-top: 2px;
+    }
+  }
+  
+  .login-container {
+    position: relative;
+  }
+  
+  .login-form {
+    display: none;
+    position: absolute;
+    padding: 20px;
+    margin-top: 10px;
+    background: #ddd;
+    border-radius: 4px;
+    box-shadow: 0 4px 0 darken(#ddd, 5%);
+  }
+  
+  .open {
+    display: block;
+  }
+
 /* NAVIGATION END */
 
 
 /* HOME START */
 #home {
     background: linear-gradient(to right, #14160D, #231C16);
-    height: 650;
+    height: 640;
     padding-top: 80px;
     overflow: auto;
     clear: both;
@@ -136,7 +201,7 @@ p, h1 {
 
 .intro p, .banner p {
     padding: 1.1em 0;
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .intro h1, #about h1, #projects h1, #contact h1 {
@@ -147,14 +212,12 @@ p, h1 {
 span {
     color: #A4AC86;
 }
-
 /* HOME END */
 
 /* ABOUT ME START */
 #about {
     background-color: #0e0e0e;
     clear: both;
-    float: left;
     height: auto;
     overflow: auto;
 }
@@ -164,20 +227,33 @@ span {
 }
 
 #about h1 {
-    padding-top: 80px;
+    padding: 80px 0 10px 0;
 }
 
-#profile {
-    width: 350px;
+.profile {
+    width: 380px;
     height: auto;
-
     border-radius: 10px;
+    padding: 0;
+    margin-top: 25px;
+}
+
+.banner-txt {
+    text-align: justify;
 }
 
 .box {
     background-color: #181818;
     border-radius: 8px;
     overflow: auto;
+}
+
+.box ul {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
 }
 
 .box li {
@@ -189,17 +265,14 @@ span {
     padding: 15px;
 }
 
-
-
 /* PROJECTS START */
 #projects {
     background: linear-gradient(#0E0E0E, #1A1C15, #1E1915);
     height: auto;
-
 }
-
-
 /* PROJECTS END */
+
+
 
 /* CONTACTS START */
 
