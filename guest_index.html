@@ -12,8 +12,6 @@
     <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon_io/favicon-16x16.png">
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
-
-
 </head>
 <body>
 <div id="container">
@@ -35,15 +33,14 @@
                             <?php } ?>
 
                             <form method="post">
-                                <label>Username: <input type="text" name="username" placeholder="Enter your username" required></label><br>
-                                <label>Password: <input type="password" name="password" placeholder="Enter your password" required></label><br>
+                                <label>Username <input type="text" name="username" placeholder="Enter your username" required></label><br>
+                                <label>Password <input type="password" name="password" placeholder="Enter your password" required></label><br>
                                 <button type="submit">Login</button>
                             </form>
 
                             <script>
-                                $('#login-button').click(function() {
-                                $('.login-form').toggleClass('open');
-                                })
+                                $('#login-button').click(function() { $('.login-form').toggleClass('open').fadeToggle(200) })
+                                $('#home').click(function() { $('.login-form').toggle(); })
                             </script>
                         </div>
                     </li>
@@ -141,14 +138,13 @@
         </div>
         <div class="con-box-2">
             <form method="post">
-                <label>NAME: <input type="text" name="name" required</label><br>
-                <label>EMAIL: <input type="text" name="email" required</label><br>
-                <label>MESSAGE: <input type="text" name="msg" required</label><br>
+                <label>name <input type="text" name="name" required</label><br>
+                <label>email <input type="text" name="email" required</label><br>
+                <label>message <input type="text" name="msg" required</label><br>
                 <button type="submit">submit</button>
             </form>
         </div>
     </div>
-
 </div>
 </body>
 </html>
