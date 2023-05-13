@@ -29,6 +29,9 @@
         align-items: center; 
         justify-content: center;
     }
+    .login-form {
+        display: relative;
+    }
     .socials a { padding: 0 10px; }
     .banner .profile {
         width: 300px;
@@ -36,17 +39,22 @@
     }
     .profile {
         display: block;
-        margin: 0 auto;
+        margin: 10px auto;
         object-fit: cover;
         object-position: 0 30%;
     }
-
     .banner-txt {
-        margin: 0 auto;
+        clear: both;
     }
+
     h1 {
         text-align: center;
     }
+
+    .heading {
+        margin-bottom: 50px;
+    }
+
     #about { padding: 0 30px; }
 }
 
@@ -117,7 +125,7 @@
 
 #sticky-top a:after {    
     background: none repeat scroll 0 0 transparent;
-    bottom: 3px;
+    bottom: 0px;
     content: "";
     display: block;
     height: 2px;
@@ -209,9 +217,9 @@ input {
 /* HOME START */
 #home {
     background: linear-gradient(to right, #14160D, #231C16);
-    height: 640px   ;
+    height: 630px   ;
     padding-top: 80px;
-    overflow: auto;
+    overflow: hidden;
     clear: both;
 }
 
@@ -227,11 +235,6 @@ input {
     padding: 0;
 }
 
-p, h1 {
-    color: #E0E0E0;
-    line-height: 1.5;
-}
-
 .intro p, .banner p {
     padding: 1.1em 0;
     font-size: 16px;
@@ -241,26 +244,14 @@ p, h1 {
     font-size: 64px;
     line-height: 1;
 }
-
-span {
-    color: #A4AC86;
-}
 /* HOME END */
 
 /* ABOUT ME START */
 #about {
     background-color: #0e0e0e;
     clear: both;
-    height: auto;
+    min-height: 90vh;
     overflow: auto;
-}
-
-#about .col-8 {
-    margin: 0;
-}
-
-#about h1 {
-    padding: 80px 0 10px 0;
 }
 
 .banner {
@@ -268,7 +259,8 @@ span {
 }
 
 .profile {
-    width: 380px;
+    max-width: 100%;
+    width: 350px;
     height: auto;
     border-radius: 10px;
     padding: 0;
@@ -277,13 +269,16 @@ span {
 
 .banner-txt {
     text-align: justify;
-    margin: 50px;
+    overflow: hidden;
 }
 
 .box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
     background-color: #181818;
     border-radius: 8px;
-    overflow: auto;
 }
 
 .box ul {
@@ -306,41 +301,96 @@ span {
 /* PROJECTS START */
 #projects {
     background: linear-gradient(#0E0E0E, #1A1C15, #1E1915);
-    height: auto;
+    min-height: 85vh;
+    clear: both;
+    overflow: auto;
 }
 
 #projects a {
     color: #e0e0e0;
     text-decoration: none;
+    &:hover {
+        color: #A4AC86;
+        transition: color 0.5s ease;
+    }
+}
+
+.proj-content {
+    font-size: 11px;
+    clear: both;
 }
 
 .proj-grid {
-    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0;
+}
+
+.grid {
+    width: 280px;
+    height: 200px;
+    margin: 20px 0;
+
+    background: #202020;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.grid-txt {
+    width: 280px;
+    height: 80px;
+    padding: 10px;
+    background: #181818;    
+    border-radius: 0 0 5px 5px;
 }
 /* PROJECTS END */
 
 /* CONTACTS START */
 #contact {
-    background-color: red;
-    height: auto;
+    background: linear-gradient(#1E1915, #0E0E0E);
+    height: 80vh;
+    clear: both;
 }
 
-#con-box-1 {
-    position: absolute;
+.con-box-1 {
+    background: #181818;
+    border-radius: 20px 0;
+    padding: 80px;
 
-    width: 500px;
-    height: 90%;
+    width: 40vw;
+    height: 80vh;
     z-index: 1;
 }
 
-#con-box-2 {
-    position: absolute;
-    width: 300px;
+.con-box-2 {
+    background: #e0e0e0;
+    width: 20vw;
     height: 100%;
     z-index: 2;
     
-  }
+}
+
+  #contact label {
+    text-transform: uppercase;
+    font-weight: bold;
+}
 /* CONTACTS END*/
 
 /* GENERAL START */
+.heading {
+    margin-top: 60px;
+}
+
+span {
+    color: #A4AC86;
+}
+
+p, h1 {
+    color: #E0E0E0;
+    line-height: 1.5;
+}
 /* GENERAL END */
