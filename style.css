@@ -25,28 +25,25 @@
     .home-txt { text-align: center; }
     .socials {
         display: flex;
-        flex-flow: row, nowrap; 
         margin-bottom: 80px; 
         align-items: center; 
         justify-content: center;
     }
     .socials a { padding: 0 10px; }
-
     .banner #profile {
         width: 300px;
         height: 250px;
     }
-
     .profile {
         display: block;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 0;
+        margin: 20px auto;
 
         object-fit: cover;
         object-position: 0 30%;
     }
-
+    h1 {
+        text-align: center;
+    }
     #about { padding: 0 30px; }
 }
 
@@ -117,7 +114,7 @@
 
 #sticky-top a:after {    
     background: none repeat scroll 0 0 transparent;
-    bottom: 3;
+    bottom: 3px;
     content: "";
     display: block;
     height: 2px;
@@ -204,14 +201,12 @@ input {
         background-color: #c9c9c9;
     }
 }
-
 /* NAVIGATION END */
-
 
 /* HOME START */
 #home {
     background: linear-gradient(to right, #14160D, #231C16);
-    height: 640;
+    height: 640px   ;
     padding-top: 80px;
     overflow: auto;
     clear: both;
@@ -305,11 +300,38 @@ span {
     background: linear-gradient(#0E0E0E, #1A1C15, #1E1915);
     height: auto;
 }
+
+#projects a {
+    color: #e0e0e0;
+    text-decoration: none;
+}
+
+.proj-grid {
+    
+}
 /* PROJECTS END */
 
 /* CONTACTS START */
+#contact {
+    background-color: red;
+    height: auto;
+}
 
+#con-box-1 {
+    position: absolute;
 
+    width: 500px;
+    height: 90%;
+    z-index: 1;
+}
+
+#con-box-2 {
+    position: absolute;
+    width: 300px;
+    height: 100%;
+    z-index: 2;
+    
+  }
 /* CONTACTS END*/
 
 /* GENERAL START */
