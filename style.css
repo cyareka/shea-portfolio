@@ -161,7 +161,7 @@ button {
       margin-top: 1px;
     }
     &:hover {
-        background-color: #333D29;
+        background-color: #3a1d06;
     }
 }
 
@@ -330,7 +330,7 @@ input {
 
 .grid {
     width: 280px;
-    height: 200px;
+    height: 230px;
     margin: 20px 0;
 
     background: #202020;
@@ -352,32 +352,128 @@ input {
 /* CONTACTS START */
 #contact {
     background: linear-gradient(#1E1915, #0E0E0E);
-    height: 80vh;
+    height: 70vh;
     clear: both;
+    overflow: auto;
+
+}
+
+.con-content {
+    height: 70vh;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: start;
+    align-items: end;
+    padding: 0; 
+}
+
+.con-content div {
+    grid-row-start: 1;
+    grid-column-start: 1;
 }
 
 .con-box-1 {
     background: #181818;
-    border-radius: 20px 0;
+    border-radius: 20px 20px 0 0;
     padding: 80px;
+    align-self: end;
 
     width: 40vw;
-    height: 80vh;
-    z-index: 1;
+    height: 65vh;
+}
+
+.con-box-1-con {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 30px 0;
+    margin: 10px 0;
+    color: #c9c9c9;
+}
+
+.con-box-1-con h2 {
+    font-size: 18px;
+}
+
+.con-box-1-con ul {
+    list-style-type: none;
+    font-size: 14px;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.con-box-1-con li {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.con-box-1-con li img {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.con-box-1-con .socials {
+    margin: 15px 0;
 }
 
 .con-box-2 {
     background: #e0e0e0;
-    width: 20vw;
-    height: 100%;
-    z-index: 2;
-    
+    border-radius: 20px 20px 0 0;
+
+    padding: 40px;
+    width: 30vw;
+    height: 55vh;
+    margin-left: 530px;
 }
 
-  #contact label {
+
+.con-box-2 form {
+    display: flex;
+    flex-direction: column;
+
+    padding: 0;
+}
+
+.con-box-2 form input {
+    height: 40px;
+}
+
+.con-box-2 form .msg {
+    height: 100px;
+    padding: 5px;
+    resize: none;
+
+    border: none;
+    border-radius: 2px;
+    background-color: #a9a9a9;
+    outline: 0;
+    border-color: #0E0E0E;
+    color: #0e0e0e;
+    &:focus {
+        border-bottom: 3px solid #72865d;
+        background-color: #c9c9c9;
+    }
+}
+
+#contact label {
     text-transform: uppercase;
     font-weight: bold;
+    font-size: 18px;
+}           
+
+.con-box-2 button {
+    float: right;
+    background-color: #72865d;
+    width: 90px;
+    height: 40px;
+    &:hover {
+        background-color: #333D29;
+        transition: background-color 0.5s ease;
+    }
 }
+
 /* CONTACTS END*/
 
 /* GENERAL START */

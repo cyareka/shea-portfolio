@@ -161,16 +161,17 @@
     </div>
 
     <div id="contact">
-        <div class="con-content">
-            <div class="col-2"></div>
-            <div class="con-box-1 col-5">
+        <div class="col-2"></div>
+        <div class="con-content col-8">
+            <div class="con-box-1">
                 <h1>let's get <span>in touch!</span></h1>
-                <div>
+                <div class="con-box-1-con">
                     <h2>COME SAY HELLO</h2>
                     <ul>
-                        <li><img src=""><a href=""></a>sheardeehzurrielle@gmail.com</li>
-                        <li><a href="">+639356000500</a></li>
+                        <li><img src="./img/icons8-letter-30.png">sheardeehzurrielle@gmail.com</li>
+                        <li><img src="./img/icons8-phone-ringing-30.png">+639356000500</li>
                     </ul>
+                    <h2>YOU CAN ALSO FIND ME ON</h2>
                     <div class="socials">
                         <a href="https://github.com/cyareka" target="_blank"><img src="./img/icons8-github-50.png"></a>
                         <a href="" target="_blank"><img src="./img/icons8-discord-new-50.png"></a>
@@ -178,16 +179,22 @@
                     </div>
                 </div>
             </div>
-            <div class="con-box-2 col-3">
+            <div class="con-box-2">
+                <?php if (isset($errorMessage)) { ?>
+                    <p><?= $errorMessage; ?></p>
+                    <?php } ?>
                 <form method="post">
-                    <label>name <input type="text" name="name" required></label><br>
-                    <label>email <input type="text" name="email" required></label><br>
-                    <label>message <input type="text" name="msg" required></label><br>
+                    <label>name</label>
+                    <input type="text" name="name" placeholder="Enter your name" required>
+                    <label>email</label>
+                    <input type="text" name="email" placeholder="Enter your email" required>
+                    <label>message</label>
+                    <textarea class="msg" type="textarea" name="msg" placeholder="Tell me what you think!" required></textarea>
                     <button type="submit">submit</button>
                 </form>
             </div>
-            <div class="col-2"></div>
         </div>
+        <div class="col-2"></div>
     </div>
 </div>
 
