@@ -1,60 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    font-family: 'JetBrains Mono', monospace;
-    scroll-behavior: smooth;
-}
+* { box-sizing: border-box; margin: 0; font-family: 'JetBrains Mono', monospace; scroll-behavior: smooth; }
 
-#container {
-    width: 100%;
-    margin: 0 auto;
-}
+#container { width: 100%; margin: 0 auto; }
 
 [class*="col-"] { float: left; padding: 15px; }
 
 @media only screen and (max-width: 767px) {
-    [class*="col-"]{
-        width: 100%;
-        padding: 0;
-    }
-
+    [class*="col-"]{ width: 100%; padding: 0; }
     #nav .col-2 { width: 0%; }  
     .icon { display: none; }
     .home-txt { text-align: center; }
-    .socials {
-        display: flex;
-        margin-bottom: 80px; 
-        align-items: center; 
-        justify-content: center;
-    }
-    .login-form {
-        display: relative;
-    }
+    .socials { display: flex; margin-bottom: 80px; align-items: center; justify-content: center; }
+    .login-form { display: relative; }
     .socials a { padding: 0 10px; }
-    .banner .profile {
-        width: 300px;
-        height: 250px;
-    }
-    .profile {
-        display: block;
-        margin: 10px auto;
-        object-fit: cover;
-        object-position: 0 30%;
-    }
-    .banner-txt {
-        clear: both;
-    }
-
-    h1 {
-        text-align: center;
-    }
-
-    .heading {
-        margin-bottom: 50px;
-    }
-
+    .banner .profile { width: 300px; height: 250px; }
+    .profile { display: block; margin: 10px auto; object-fit: cover; object-position: 0 30%; }
+    .banner-txt { clear: both; }
+    .heading { text-align: center; margin-bottom: 50px; }
     #about { padding: 0 30px; }
 }
 
@@ -79,13 +42,11 @@
     color: #0e0e0e;
     height: 7px;
 }
-
 #nav {
     position: fixed;
     width: 100%;
     height: 65px;
 }
-
 #nav [class*="col-"] {
     height: inherit;
     padding: 0px; 
@@ -93,11 +54,9 @@
     -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
 }
-
 #sticky-top {
     background-color: #0e0e0eac;
 }
-
 #sticky-top ul {
     height: 99%;
     padding: 0;
@@ -107,14 +66,12 @@
     justify-content: center;
     align-items: center;
 }
-
 #sticky-top li {
     list-style: none;
     height: 99%;
     padding: 20px 10px 30px 10px;
     float: left;
 }
-
 #sticky-top a {
     color: #e0e0e0;
     text-decoration: none;
@@ -122,7 +79,6 @@
     display: inline-block;
     position: relative;
 }
-
 #sticky-top a:after {    
     background: none repeat scroll 0 0 transparent;
     bottom: 0px;
@@ -135,17 +91,14 @@
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
     width: 0;
 }
-
 #sticky-top a:hover:after { 
     width: 100%; 
     left: 0; 
 }
-
 .login-wrapper {
     width: auto;
     margin: 0;
-  }
-  
+} 
 button {
     padding: 2px 10px;
     border: 0;
@@ -164,7 +117,6 @@ button {
         background-color: #3a1d06;
     }
 }
-
 form button {
     margin-top: 20px;
     float: right;
@@ -172,16 +124,13 @@ form button {
         margin-top: 18px;
     }
 }
-  
 .login-container {
     position: relative;
 }
-
 label, input {
     padding: 5px;
     margin-top: 10px;
 }
-  
 .login-form {
     display: none;
     box-shadow: 1px 1px 10px 1px #00000038 ;
@@ -195,11 +144,9 @@ label, input {
     border-radius: 4px;
     box-shadow: 0 4px 0 darken(#222222, 5%);
 }
-  
 .open {
     display: block;
 }
-
 input {
     border: none;
     border-radius: 2px;
@@ -222,24 +169,20 @@ input {
     overflow: hidden;
     clear: both;
 }
-
 .icon {
     margin-top: 100px;
     width: 450px;
     height: auto;
     padding: 0;
 }
-
 .intro {
     margin-top: 100px;
     padding: 0;
 }
-
 .intro p, .banner p {
     padding: 1.1em 0;
     font-size: 16px;
 }
-
 .intro h1, #about h1, #projects h1, #contact h1 {
     font-size: 64px;
     line-height: 1;
@@ -253,11 +196,9 @@ input {
     min-height: 90vh;
     overflow: auto;
 }
-
 .banner {
     clear: both;
 }
-
 .profile {
     max-width: 100%;
     width: 350px;
@@ -266,12 +207,10 @@ input {
     padding: 0;
     margin-top: 25px;
 }
-
 .banner-txt {
     text-align: justify;
     overflow: hidden;
 }
-
 .box {
     display: flex;
     justify-content: center;
@@ -280,7 +219,6 @@ input {
     background-color: #181818;
     border-radius: 8px;
 }
-
 .box ul {
     padding: 0;
     display: flex;
@@ -288,15 +226,14 @@ input {
     align-items: center;
     flex-wrap: nowrap;
 }
-
 .box li {
     list-style-type: none;
     float: left;
 }
-
 .box img {
     padding: 15px;
 }
+/* ABOUT ME END */
 
 /* PROJECTS START */
 #projects {
@@ -305,7 +242,6 @@ input {
     clear: both;
     overflow: auto;
 }
-
 #projects a {
     color: #e0e0e0;
     text-decoration: none;
@@ -314,12 +250,10 @@ input {
         transition: color 0.5s ease;
     }
 }
-
 .proj-content {
     font-size: 11px;
     clear: both;
 }
-
 .proj-grid {
     display: flex;
     flex-wrap: wrap;
@@ -327,7 +261,6 @@ input {
     align-items: center;
     padding: 0;
 }
-
 .grid {
     width: 280px;
     height: 230px;
@@ -339,7 +272,6 @@ input {
     justify-content: center;
     align-items: flex-end;
 }
-
 .grid-txt {
     width: 280px;
     height: 80px;
@@ -357,7 +289,6 @@ input {
     overflow: auto;
 
 }
-
 .con-content {
     height: 70vh;
     display: grid;
@@ -366,12 +297,10 @@ input {
     align-items: end;
     padding: 0; 
 }
-
 .con-content div {
     grid-row-start: 1;
     grid-column-start: 1;
 }
-
 .con-box-1 {
     background: #181818;
     border-radius: 20px 20px 0 0;
@@ -381,7 +310,6 @@ input {
     width: 40vw;
     height: 65vh;
 }
-
 .con-box-1-con {
     display: flex;
     flex-direction: column;
@@ -390,34 +318,28 @@ input {
     margin: 10px 0;
     color: #c9c9c9;
 }
-
 .con-box-1-con h2 {
     font-size: 18px;
 }
-
 .con-box-1-con ul {
     list-style-type: none;
     font-size: 14px;
     padding: 0;
     margin: 15px 0;
 }
-
 .con-box-1-con li {
     display: flex;
     align-items: center;
     margin: 10px 0;
 }
-
 .con-box-1-con li img {
     width: 20px;
     height: 20px;
     margin-right: 10px;
 }
-
 .con-box-1-con .socials {
     margin: 15px 0;
 }
-
 .con-box-2 {
     background: #e0e0e0;
     border-radius: 20px 20px 0 0;
@@ -427,19 +349,15 @@ input {
     height: 55vh;
     margin-left: 530px;
 }
-
-
 .con-box-2 form {
     display: flex;
     flex-direction: column;
 
     padding: 0;
 }
-
 .con-box-2 form input {
     height: 40px;
 }
-
 .con-box-2 form .msg {
     height: 100px;
     padding: 5px;
@@ -456,13 +374,11 @@ input {
         background-color: #c9c9c9;
     }
 }
-
 #contact label {
     text-transform: uppercase;
     font-weight: bold;
     font-size: 18px;
 }           
-
 .con-box-2 button {
     float: right;
     background-color: #72865d;
@@ -473,18 +389,15 @@ input {
         transition: background-color 0.5s ease;
     }
 }
-
 /* CONTACTS END*/
 
 /* GENERAL START */
 .heading {
     margin-top: 60px;
 }
-
 span {
     color: #A4AC86;
 }
-
 p, h1 {
     color: #E0E0E0;
     line-height: 1.5;
