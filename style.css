@@ -66,6 +66,9 @@
     -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
 }
+.welcome {
+
+}
 #sticky-top {
     background-color: #0e0e0eac;
 }
@@ -127,6 +130,9 @@ button {
     }
     &:hover {
         background-color: #3a1d06;
+        box-shadow:
+        0 0 20px #5f300a;
+
     }
 }
 form button {
@@ -200,7 +206,7 @@ input {
     padding: 1.1em 0;
     font-size: 16px;
 }
-.intro h1, #about h1, #projects h1, #contact h1 {
+.intro h1, #about h1, #projects h1, #contact h1, #contact-h h1 {
     font-size: 64px;
     line-height: 1;
 }
@@ -336,6 +342,12 @@ input {
     clear: both;
     overflow: hidden;
 }
+#contact-h {
+    background: #0E0E0E;
+    height: 100%;
+    clear: both;
+    overflow: hidden;
+}
 #contact label {
     text-transform: uppercase;
     font-weight: bold;
@@ -431,6 +443,7 @@ input {
     &:hover {
         background-color: #333D29;
         transition: background-color 0.5s ease;
+        box-shadow: none;
     }
 }
 /* CONTACTS END*/
@@ -447,6 +460,8 @@ p, h1 {
     line-height: 1.5;
 }
 
-
+body.hide-div .login-form {
+    display: none;
+}
 
 /* GENERAL END */

@@ -25,7 +25,7 @@
                 $_SESSION['logged_in'] = true;
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['type'] = $row['type'];
-                header('Location: user_index.php');
+                header('Location: user_index#home.php');
                 exit;
             } else if (($row['type'] == 'admin')) {
                 $_SESSION['logged_in'] = true;
@@ -98,7 +98,7 @@
                 <p class="hide">An aspiring Full Stack Developer with a passion for designing, writing, and solving problems.</p>
             </div>
     
-            <div class="socials hide">
+            <div class="socials">
                 <a href="https://github.com/cyareka" target="_blank"><img src="./img/icons8-github-50.png"></a>
                 <a href="" target="_blank"><img src="./img/icons8-discord-new-50.png"></a>
                 <a href="https://instagr.am/uvraes" target="_blank"><img src="./img/icons8-instagram-50.png"></a>
@@ -109,7 +109,7 @@
         <div class="col-2"></div>
 
     </div>
-    <div id="about">
+    <!-- <div id="about">
         <div class="heading">
             <div class="col-2"></div>
             <h1 class="col-8">about <span>me</span></h1>   
@@ -197,8 +197,8 @@
             </div>
         </div>
         <div class="col-2"></div>
-    </div>
-    <div id="contact">
+    </div> -->
+    <div id="contact-h">
         <div class="col-2"></div>
         <div class="con-content col-8">
             <div class="con-box-1">

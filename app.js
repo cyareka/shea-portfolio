@@ -3,8 +3,10 @@ $(document).ready(function() {
         $('.login-form').toggleClass('open').fadeToggle(200)
     });
       
-    $('#home').click(function() {
-        $('.login-form').toggle();
+    $(document).click(function(event) {
+        if (!$(event.target).closest('.login-wrapper').length) {
+            $('.login-form').fadeOut(200).removeClass('open');
+        }
     });
 
     const observer = new IntersectionObserver((entries) => {
@@ -20,5 +22,16 @@ $(document).ready(function() {
     
     const hiddenElement = document.querySelectorAll('.hide');
     hiddenElement.forEach((el) => observer.observe(el));
+
+    document.body.addEventListener("click", function(event) {
+        var login_form = document.getElementsByClassName("login-form");
+        
+        if (!login_form.contains(event.target)) {
+            login_form.style.display = "none";
+        }
+    });
 });
+
+
+
 
