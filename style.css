@@ -1,26 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 
 * { box-sizing: border-box; margin: 0; font-family: 'JetBrains Mono', monospace; scroll-behavior: smooth; }
-
 #container { width: 100%; margin: 0 auto; }
-
 [class*="col-"] { float: left; padding: 15px; }
-
 @media only screen and (max-width: 767px) {
     [class*="col-"]{ width: 100%; padding: 0; }
     #nav .col-2 { width: 0%; }  
     .icon { display: none; }
     .home-txt { text-align: center; }
     .socials { display: flex; margin-bottom: 80px; align-items: center; justify-content: center; }
-    .login-form { display: relative; }
+    .login-form { display: none; box-shadow: 1px 1px 10px 1px #00000038; width: 325px; color: #e0e0e0; font-size: 14px; position: absolute; right: 20px; padding: 20px; margin-top: 10px; background: #181818; border-radius: 4px; box-shadow: 0 4px 0 darken(#222222, 5%); }
     .socials a { padding: 0 10px; }
     .banner .profile { width: 300px; height: 250px; }
     .profile { display: block; margin: 10px auto; object-fit: cover; object-position: 0 30%; }
     .banner-txt { clear: both; }
     .heading { text-align: center; margin-bottom: 50px; }
     #about { padding: 0 30px; }
+    #contact { height: 200%; }
+    #contact .con-content div { grid-row-start: 0; }
+    #contact .con-box-1 { width: 100%; height: 90%; }
+    #contact .con-box-2 { grid-row-start: 3; width: 100%; height: auto; margin: 0; }
+    #contact .socials { display: flex; justify-content: flex-start; }
 }
-
 @media only screen and (min-width: 768px) {
     .col-1 { width: 8.33%; }
     .col-2 { width: 16.66%; }
@@ -34,6 +35,17 @@
     .col-10 { width: 83.33%; }
     .col-11 { width: 91.66%; }
     .col-12 { width: 100%; }
+}
+.hide {
+    opacity: 0;
+    transition: all 1s ease;
+    filter: blur(5px);
+    transform: translateY(50%);
+}
+.shou {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0);
 }
 
 /* NAVIGATION START*/
@@ -107,7 +119,7 @@ button {
     background-color: #582F0E;
     font-size: 16px;
     text-transform: lowercase;
-    border-radius: 4px;
+    border-radius: 10px;
     transition: background-color 0.5s ease;
 
     &:active {
@@ -123,6 +135,10 @@ form button {
     &:active {
         margin-top: 18px;
     }
+}
+
+form #logout-button {
+    margin-top: 0;
 }
 .login-container {
     position: relative;
@@ -157,6 +173,7 @@ input {
     &:focus {
         border-bottom: 3px solid #72865d;
         background-color: #c9c9c9;
+        transition: background-color 5s ease;
     }
 }
 /* NAVIGATION END */
@@ -194,10 +211,40 @@ input {
     background-color: #0e0e0e;
     clear: both;
     min-height: 90vh;
-    overflow: auto;
+    overflow: hidden;
 }
 .banner {
     clear: both;
+}
+#about-head {
+    width: 150px;
+    height: 94px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+#cv-dl {
+    text-decoration: none;
+    font-size: 16px;
+    text-transform: lowercase;
+    text-align: center;
+
+    width: 150px;
+    padding: 2px 10px;
+    border: 0;
+    outline: 0;
+    color: #e0e0e0;
+    background-color: #582F0E;
+    border-radius: 10px;
+    transition: background-color 0.5s ease;
+    
+    &:active {
+      margin-top: 1px;
+    }
+    &:hover {
+        background-color: #3a1d06;
+    }
 }
 .profile {
     max-width: 100%;
@@ -240,7 +287,7 @@ input {
     background: linear-gradient(#0E0E0E, #1A1C15, #1E1915);
     min-height: 85vh;
     clear: both;
-    overflow: auto;
+    overflow: hidden;
 }
 #projects a {
     color: #e0e0e0;
@@ -272,6 +319,7 @@ input {
     justify-content: center;
     align-items: flex-end;
 }
+
 .grid-txt {
     width: 280px;
     height: 80px;
@@ -284,13 +332,17 @@ input {
 /* CONTACTS START */
 #contact {
     background: linear-gradient(#1E1915, #0E0E0E);
-    height: 70vh;
+    height: 100%;
     clear: both;
-    overflow: auto;
-
+    overflow: hidden;
 }
+#contact label {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 18px;
+} 
 .con-content {
-    height: 70vh;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr;
     justify-items: start;
@@ -304,11 +356,9 @@ input {
 .con-box-1 {
     background: #181818;
     border-radius: 20px 20px 0 0;
-    padding: 80px;
-    align-self: end;
-
-    width: 40vw;
-    height: 65vh;
+    padding: 6%;
+    width: 60%;
+    height: 90%;
 }
 .con-box-1-con {
     display: flex;
@@ -343,23 +393,22 @@ input {
 .con-box-2 {
     background: #e0e0e0;
     border-radius: 20px 20px 0 0;
-
-    padding: 40px;
-    width: 30vw;
-    height: 55vh;
-    margin-left: 530px;
+    padding: 3%;
+    width: 40%;
+    height: 80%;
+    margin-left: 55%;
+    grid-area: con-box-2;
 }
 .con-box-2 form {
     display: flex;
     flex-direction: column;
-
     padding: 0;
 }
 .con-box-2 form input {
     height: 40px;
 }
 .con-box-2 form .msg {
-    height: 100px;
+    height: 90px;
     padding: 5px;
     resize: none;
 
@@ -374,11 +423,6 @@ input {
         background-color: #c9c9c9;
     }
 }
-#contact label {
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 18px;
-}           
 .con-box-2 button {
     float: right;
     background-color: #72865d;
@@ -402,4 +446,7 @@ p, h1 {
     color: #E0E0E0;
     line-height: 1.5;
 }
+
+
+
 /* GENERAL END */

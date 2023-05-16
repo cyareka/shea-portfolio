@@ -18,7 +18,7 @@
         die("Connection failed: " . $conn -> connect_error);
     }
 
-    $sql = "CREATE DATABASE database";
+    $sql = "CREATE DATABASE db_fernandez";
     if ($conn -> query($sql) === TRUE) 
         echo "Database created successfully";
     else

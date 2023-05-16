@@ -12,7 +12,7 @@
     $servername = "localhost";
     $username = "root"; 
     $password = ""; 
-    $dbname = "database";
+    $dbname = "db_fernandez";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -20,11 +20,42 @@
         die("Connection failed: " . $conn -> connect_error); 
     }
 
-    $sql = "CREATE TABLE project (proj_id UNSIGNED AUTO_INCREMENT PRIMARY KEY, proj_name VARCHAR(40) NOT NULL, proj_desc VARCHAR(500) NOT NULL)"; 
+    $proj = "CREATE TABLE project (
+        proj_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
+        proj_image LONGBLOB NOT NULL,
+        proj_title VARCHAR(40) NOT NULL, 
+        proj_desc VARCHAR(500) NOT NULL
+        )"; 
+    
+    $contactmsg = "CREATE TABLE contactmsg (
+        msg_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        msg_name VARCHAR(30) NOT NULL,
+        msg_email VARCHAR(30) NOT NULL,
+        msg_content VARCHAR(1000) NOT NULL,
+        date_added DATETIME DEFAULT CURRENT_TIMESTAMP
+        )";
 
-    if ($conn -> query($sql) === TRUE) 
-        echo "Tables created successfully"; else 
-        echo "Error creating table: " . $conn -> error; 
+    $user = "CREATE TABLE user (
+        user_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+        username VARCHAR(12) NOT NULL,
+        password VARCHAR(20) NOT NULL,
+        type VARCHAR(20) NOT NULL
+        )";
+
+    $tables = [$proj, $contactmsg, $user];
+
+    foreach($tables as $k => $sql){
+        $query = @$conn->query($sql);
+    
+        if(!$query)
+           $errors[] = "Table $k : Creation failed ($conn->error)";
+        else
+           $errors[] = "Table $k : Creation done";
+    }
+    
+    foreach($errors as $msg) {
+       echo "$msg <br>";
+    }
 
     $conn -> close();  
 ?>
