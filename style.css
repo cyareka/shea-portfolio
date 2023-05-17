@@ -1,6 +1,11 @@
-    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap');
 
-* { box-sizing: border-box; margin: 0; font-family: 'JetBrains Mono', monospace; scroll-behavior: smooth; }
+/* GENERAL START */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    font-family: 'JetBrains Mono', monospace;
+    scroll-behavior: smooth; }
 #container { width: 100%; margin: 0 auto; }
 [class*="col-"] { float: left; padding: 15px; }
 @media only screen and (max-width: 767px) {
@@ -16,11 +21,12 @@
     .banner-txt { clear: both; }
     .heading { text-align: center; margin-bottom: 50px; }
     #about { padding: 0 30px; }
-    #contact { height: 200%; }
-    #contact .con-content div { grid-row-start: 0; }
-    #contact .con-box-1 { width: 100%; height: 90%; }
-    #contact .con-box-2 { grid-row-start: 3; width: 100%; height: auto; margin: 0; }
-    #contact .socials { display: flex; justify-content: flex-start; }
+    #about-head { margin: 0 auto; }
+    #contact, #contact-h { height: 200%; }
+    #contact .con-content div, #contact-h .con-content div { grid-row-start: 0; }
+    #contact .con-box-1, #contact-h .con-box-1 { width: 100%; height: 90%; }
+    #contact .con-box-2, #contact-h .con-box-2 { grid-row-start: 3; width: 100%; height: auto; margin: 0; }
+    #contact .socials, #contact-h .socials { display: flex; justify-content: flex-start; }
 }
 @media only screen and (min-width: 768px) {
     .col-1 { width: 8.33%; }
@@ -47,6 +53,18 @@
     filter: blur(0);
     transform: translateY(0);
 }
+.heading {
+    margin-top: 60px;
+}
+span {
+    color: #A4AC86;
+}
+p, h1 {
+    color: #E0E0E0;
+    line-height: 1.5;
+}
+/* GENERAL END */
+
 
 /* NAVIGATION START*/
 #gradient-bar {
@@ -65,9 +83,6 @@
     background-color: #0e0e0eac;
     -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
-}
-.welcome {
-
 }
 #sticky-top {
     background-color: #0e0e0eac;
@@ -448,20 +463,6 @@ input {
 }
 /* CONTACTS END*/
 
-/* GENERAL START */
-.heading {
-    margin-top: 60px;
-}
-span {
-    color: #A4AC86;
-}
-p, h1 {
-    color: #E0E0E0;
-    line-height: 1.5;
-}
+/* DASHBOARD START */
 
-body.hide-div .login-form {
-    display: none;
-}
-
-/* GENERAL END */
+/* DASHBOARD END */

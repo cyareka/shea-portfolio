@@ -36,15 +36,7 @@ if (!isset($_SESSION['username'])) {
     <div id="nav">
         <div id="gradient-bar">_</div>
         <div class="col-2"></div>
-            <div class="welcome col-3">
-                <?php
-                    if (isset($_SESSION['username'])) {
-                        $username = $_SESSION['username'];
-                        echo "Welcome, $username";
-                    }
-                ?>
-            </div>
-            <div id="sticky-top" class="col-5">
+            <div id="sticky-top" class="col-8">
                 <ul>
                     <li><a href="#home">home</a></li>
                     <li><a href="#about">about</a></li>

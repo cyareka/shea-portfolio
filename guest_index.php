@@ -67,8 +67,6 @@
             <div id="sticky-top" class="col-8">
                 <ul>
                     <li><a href="#home">home</a></li>
-                    <li><a href="#about">about</a></li>
-                    <li><a href="#projects">projects</a></li>
                     <li><a href="#contact">contact</a></li>
                     <li class="login-wrapper">
                         <button id="login-button" type="button">login</button>
@@ -94,8 +92,8 @@
         <div class="intro col-4">
             <div class="home-txt">
                 <p>Hi, I'm</p>
-                <h1 class="hide">She<span>arde</span>eh Fernandez</h1>
-                <p class="hide">An aspiring Full Stack Developer with a passion for designing, writing, and solving problems.</p>
+                <h1>She<span>arde</span>eh Fernandez</h1>
+                <p>An aspiring Full Stack Developer with a passion for designing, writing, and solving problems.</p>
             </div>
     
             <div class="socials">
