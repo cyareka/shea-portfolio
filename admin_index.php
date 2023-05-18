@@ -1,15 +1,12 @@
-<?php 
+<?php
 session_start();
 
-$hostname = 'localhost';
-$username = 'root';
-$password = '';
-$database = 'db_fernandez';
+require_once('./backend/config.php');
 
 $logout = 'guest_index.php';
 
 if (!isset($_SESSION['username'])) {
-    header("Location: guest_index.php");
+    header("Location: $logout");
     exit;
 }
 ?>
@@ -20,7 +17,9 @@ if (!isset($_SESSION['username'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>arde | aspiring full stack dev</title>
+    <title><?php if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+        echo "welcome, $username";} ?> | arde</title>
 
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon_io/apple-touch-icon.png">
@@ -37,7 +36,6 @@ if (!isset($_SESSION['username'])) {
         <div class="col-2"></div>
             <div id="sticky-top" class="col-8">
                 <ul>
-                    <li><a href="./admin_dashboard.php">dashboard</a></li>
                     <li><a href="#home">home</a></li>
                     <li><a href="#about">about</a></li>
                     <li><a href="#projects">projects</a></li>
@@ -117,7 +115,10 @@ if (!isset($_SESSION['username'])) {
     <div id="projects">
         <div class="heading">
             <div class="col-2"></div>
-            <h1 class="col-8"><span>proj</span>ects</h1>
+            <h1 class="col-6"><span>proj</span>ects</h1>
+            <div id="proj-head">
+                <a class="col-2" id="dashboard" href="admin_dashboard">dashboard</a>
+            </div>
             <div class="col-2"></div>
         </div>
         <div class="proj-content">

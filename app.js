@@ -49,6 +49,11 @@ $(document).ready(function() {
             login_form.style.display = "none";
         }
     });
+
+    function toggleNav() {
+        const navbarLinks = document.getElementById('navbarLinks');
+        navbarLinks.classList.toggle('show');
+    }
 });
 
 

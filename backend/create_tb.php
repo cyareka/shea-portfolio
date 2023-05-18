@@ -9,10 +9,7 @@
 <body>
 
 <?php
-    $servername = "localhost";
-    $username = "root"; 
-    $password = ""; 
-    $dbname = "db_fernandez";
+    require_once('./backend/config.php');
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -44,16 +41,46 @@
 
     $tables = [$proj, $contactmsg, $user];
 
-    foreach($tables as $k => $sql){
+    foreach ($tables as $k => $sql){
         $query = @$conn->query($sql);
     
-        if(!$query)
+        if (!$query)
            $errors[] = "Table $k : Creation failed ($conn->error)";
         else
            $errors[] = "Table $k : Creation done";
     }
     
-    foreach($errors as $msg) {
+    foreach ($errors as $msg) {
+       echo "$msg <br>";
+    }
+    
+    $username = "admin";
+    $password = "admin";
+    $type = "admin";
+    $admin = "INSERT IGNORE INTO user (username, password, type) VALUES ('$username', '$password', '$type')";
+        
+    $username = "user";
+    $password = "user";
+    $type = "user";
+    $user = "INSERT IGNORE INTO user (username, password, type) VALUES ('$username', '$password', '$type')";
+
+    $insert = [$admin, $user];
+
+    foreach ($insert as $i => $sql) {
+        $query = @$conn->query($sql);
+    
+        if (!$query)
+           $errors[] = "User $i : Creation failed ($conn->error)";
+        else {
+            if ($conn->affected_rows > 0) {
+                $errors[] = "User $i : Creation done";
+            } else {
+                $errors[] = "User $i : Already exists";
+            }
+        }
+    }
+    
+    foreach ($errors as $msg) {
        echo "$msg <br>";
     }
 

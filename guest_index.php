@@ -1,10 +1,7 @@
 <?php
     session_start();
 
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "db_fernandez";
+    require_once('./backend/config.php');
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $db_username = $_POST['username'];
@@ -31,7 +28,7 @@
                 $_SESSION['logged_in'] = true;
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['type'] = $row['type'];
-                header('Location: admin_index.php');
+                header('Location: admin_index#home.php');
                 exit;
             } else {
                 $errorMessage = 'Error executing the query: ' . $conn -> error;
@@ -67,10 +64,9 @@
             <div id="sticky-top" class="col-8">
                 <ul>
                     <li><a href="#home">home</a></li>
-                    <li><a href="#contact">contact</a></li>
+                    <li><a href="#contact-h">contact</a></li>
                     <li class="login-wrapper">
                         <button id="login-button" type="button">login</button>
-
                         <div class="login-form">
                             <?php if (isset($errorMessage)) { ?>
                             <p><?= $errorMessage; ?></p>
@@ -105,97 +101,7 @@
 
         <img class="icon col-4" src="./img/home.png">
         <div class="col-2"></div>
-
     </div>
-    <!-- <div id="about">
-        <div class="heading">
-            <div class="col-2"></div>
-            <h1 class="col-8">about <span>me</span></h1>   
-            <div class="col-2"></div>
-        </div>
-        <div class="banner">
-            <div class="col-2"></div>
-            <div class="col-3"><img class="profile" src="./img/profile.jpg"></div>
-            <div class="banner-txt col-5">
-                <p>
-                    I am Sheardeeh Zurrielle B. Fernandez, commonly called by my peers as Arde. I am a second year student pursuing a course in Information Technology, majoring in Information Security at the University of Southeastern Philippines.
-                </p>
-                <p>
-                    Although my course mainly dabbles in the field of technology, I enjoy other activities such as creative writing, editing videos and images, making art, and reading.
-                </p>
-                <p>I have experience in: </p>
-                <div class="box hide">
-                    <ul>
-                        <li><img src="./img/icons8-java-50.png"></li>
-                        <li><img src="./img/icons8-html-5-50.png"></li>
-                        <li><img src="./img/icons8-css3-50.png"></li>
-                        <li><img src="./img/icons8-mysql-logo-50.png"></li>
-                        <li><img src="./img/icons8-php-logo-50.png"></li>
-                    </ul>
-                </div>
-                <p>I am interested in learning: </p>
-                <div class="box hide">
-                    <ul>
-                        <li><img src="./img/icons8-python-50.png"></li>
-                        <li><img src="./img/icons8-javascript-50.png"></li>
-                        <li><img src="./img/icons8-ruby-programming-language-50.png"></li>
-                        <li><img src="./img/icons8-react-native-50.png"></li>
-                        <li><img src="./img/icons8-kotlin-50.png"></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-2"></div>
-        </div>
-    </div>
-    <div id="projects">
-        <div class="heading">
-            <div class="col-2"></div>
-            <h1 class="col-8"><span>proj</span>ects</h1>
-            <div class="col-2"></div>
-        </div>
-        <div class="proj-content">
-            <div class="col-2"></div>
-            <div class="proj-grid col-8">
-                <div class="grid" style="background-image: url('./img/wangsheng.png')">
-                    <div class="grid-txt">
-                        <h3><a href="https://cyareka.github.io/wangsheng-funeral-parlor/" target="_blank">Wangsheng Funeral Parlor</a></h3>
-                        <p>A prerequisite project for The Odin Project</p>
-                    </div>
-                </div>
-                <div class="grid" style="background-image: url('./img/ar.png')">
-                    <div class="grid-txt">
-                        <h3><a href="https://github.com/cyareka/ar-calculator" target="_blank">Genshin Impact AR Calculator</a></h3>
-                        <p>Calculate AR EXP needed and est. date of reaching that AR</p>
-                    </div>
-                </div>
-                <div class="grid" style="background-image: url('./img/pangandam.png')" style="filter: grayscale(100%)">
-                    <div class="grid-txt">
-                        <h3><a href="https://github.com/cyareka/pangandam" target="_blank">Pangandam</a></h3>
-                        <p>A disaster inventory management system</p>
-                    </div>
-                </div>
-                <div class="grid" style="background-image: url('./img/mps.png')">
-                    <div class="grid-txt">
-                        <h3><a href="https://github.com/cyareka/mealplan" target="_blank">Meal Plan System</a></h3>
-                        <p>Data Structures project for simple tracking of meals</p>
-                    </div>
-                </div>
-                <div class="grid" style="background-image: url('./img/flames.jpg')">
-                    <div class="grid-txt">
-                        <h3><a href="https://github.com/cyareka/flames-game" target="_blank">FLAMES Game</a></h3>
-                        <p>Implementation of everyone's childhood game</p>
-                    </div>
-                </div>
-                <div class="grid" style="background-image: url('./img/hogwarts.jpg')">
-                    <div class="grid-txt">
-                        <h3><a href="https://github.com/cyareka/hogwarts-alumni" target="_blank">Hogwarts Alumni</a></h3>
-                        <p>Alumni record written in Java with a Harry Potter theme.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-2"></div>
-    </div> -->
     <div id="contact-h">
         <div class="col-2"></div>
         <div class="con-content col-8">

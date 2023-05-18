@@ -9,8 +9,8 @@
 <body>
 <?php
     $servername = "localhost";
-    $username = "root";
-    $password = "";
+    $username = "admin";
+    $password = "admin";
 
     $conn = new mysqli($servername, $username, $password);
 

@@ -1,16 +1,12 @@
-<?php 
+<?php
 session_start();
 
-$hostname = 'localhost';
-$username = 'root';
-$password = '';
-$database = 'db_fernandez';
-
+require_once('./backend/config.php');
 
 $logout = 'guest_index.php';
 
 if (!isset($_SESSION['username'])) {
-    header("Location: guest_index.php");
+    header("Location: $logout");
     exit;
 }
 ?>
@@ -21,7 +17,9 @@ if (!isset($_SESSION['username'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>arde | aspiring full stack dev</title>
+    <title><?php if (isset($_SESSION['username'])) {
+        $username = $_SESSION['username'];
+        echo "welcome, $username";} ?> | arde</title>
 
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon_io/apple-touch-icon.png">
@@ -44,7 +42,7 @@ if (!isset($_SESSION['username'])) {
                     <li><a href="#contact">contact</a></li>
                     <li class="logout-out">
                         <form method="post" action="session_logout.php">
-                            <button name="logout" id="logout-button" type="button" onclick="location.href='guest_index.php'">logout</button>
+                            <button name="logout" id="logout-button" type="button" onclick="location.href='guest_index'">logout</button>
                         </form>
                     </li>
                 </ul>
