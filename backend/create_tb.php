@@ -21,6 +21,7 @@
         proj_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
         proj_image LONGBLOB NOT NULL,
         proj_title VARCHAR(40) NOT NULL, 
+        proj_link VARCHAR(100) NOT NULL,
         proj_desc VARCHAR(500) NOT NULL
         )"; 
     

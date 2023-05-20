@@ -37,10 +37,10 @@
                 header('Location: ../admin_index#home.php');
                 exit;
             } else {
-                $errorMessage = 'Error executing the query: ' . $conn -> error;
+                echo 'Error executing the query: ' . $conn -> error;
             }
         } else {
-            $errorMessage = 'Account does not exist.';
+            echo 'Account does not exist.';
         }
         $conn -> close();
     }
