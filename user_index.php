@@ -1,12 +1,12 @@
 <?php
 session_start();
 
-require_once('./backend/config.php');
-
-$logout = 'guest_index.php';
-
 if (!isset($_SESSION['username'])) {
-    header("Location: $logout");
+    header("Location: guest_index.php");
+    header("Cache-Control: no-cache, no-store, must-revalidate");
+    header("Pragma: no-cache");
+    header("Expires: 0");
+    header("Referrer-Policy: no-referrer");
     exit;
 }
 ?>
@@ -41,8 +41,8 @@ if (!isset($_SESSION['username'])) {
                     <li><a href="#projects">projects</a></li>
                     <li><a href="#contact">contact</a></li>
                     <li class="logout-out">
-                        <form method="post" action="session_logout.php">
-                            <button name="logout" id="logout-button" type="button" onclick="location.href='guest_index'">logout</button>
+                        <form method="post" action="./backend/session_logout.php">
+                            <button name="logout" id="logout-button" type="submit">logout</button>
                         </form>
                     </li>
                 </ul>
@@ -182,37 +182,7 @@ if (!isset($_SESSION['username'])) {
                 </div>
             </div>
             <div class="con-box-2">
-                <?php 
-                    $hostname = 'localhost';
-                    $username = 'root';
-                    $password = '';
-                    $database = 'db_fernandez';
-    
-                    $conn = new mysqli($hostname, $username, $password, $database);
-    
-                    if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
-                    }
-
-                    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        
-                        $name = $_POST['name'];
-                        $email = $_POST['email'];
-                        $msg = $_POST['msg'];
-
-                        $sql = "INSERT INTO contactmsg (msg_name, msg_email, msg_content) VALUES ('$name', '$email', '$msg')";
-        
-                        if ($conn->query($sql) === true) {
-                            $message = 'Data added successfully';
-                            error_log($message);
-                            header('user_index#contact.php');
-                        } else {
-                            $message = "Error: " . $sql . "<br>" . $conn->error;
-                            error_log($message);
-                        }
-                        $conn->close();
-                    }
-                if (isset($errorMessage)) { ?>
+                <?php  if (isset($errorMessage)) { ?>
                     <p><?= $errorMessage; ?></p>
                     <?php } ?>
                 <form method="post">

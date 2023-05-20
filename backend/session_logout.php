@@ -6,11 +6,10 @@
             $_SESSION = array();
             session_unset();
             session_destroy();
-            session_regenerate_id();
-            header("Cache-Control: no-cache, no-store, must-revalidate");
+            header("Cache-Control: no-store, no-cache, must-revalidate");
             header("Pragma: no-cache");
             header("Expires: 0");
-            header("Location: guest_index.php");
+            header("Location: ../guest_index.php");
             exit;
         }
     } catch (Exception $e) {

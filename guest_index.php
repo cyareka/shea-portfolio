@@ -1,43 +1,15 @@
 <?php
-    session_start();
+session_start();
 
-    require_once('./backend/config.php');
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        $db_username = $_POST['username'];
-        $db_password = $_POST['password'];
-    
-        $conn = new mysqli($servername, $username, $password, $dbname);
-
-        if ($conn -> connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        $sql = "SELECT * FROM user WHERE username = '$db_username' AND password = '$db_password'";
-        $result = $conn -> query($sql);
-
-        if (mysqli_num_rows($result) > 0) {
-            $row = mysqli_fetch_assoc($result);
-            if (($row['type'] == 'user')) {
-                $_SESSION['logged_in'] = true;
-                $_SESSION['username'] = $row['username'];
-                $_SESSION['type'] = $row['type'];
-                header('Location: user_index#home.php');
-                exit;
-            } else if (($row['type'] == 'admin')) {
-                $_SESSION['logged_in'] = true;
-                $_SESSION['username'] = $row['username'];
-                $_SESSION['type'] = $row['type'];
-                header('Location: admin_index#home.php');
-                exit;
-            } else {
-                $errorMessage = 'Error executing the query: ' . $conn -> error;
-            }
-        } else {
-            $errorMessage = 'Account does not exist.';
-        }
-        $conn -> close();
+if (isset($_SESSION['username'])) {
+    // User is already logged in, redirect to the appropriate page
+    if ($_SESSION['type'] == 'user') {
+        header("Location: user_index#home.php");
+    } else if ($_SESSION['type'] == 'admin') {
+        header("Location: admin_index#home.php");
     }
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
@@ -72,7 +44,7 @@
                             <p><?= $errorMessage; ?></p>
                             <?php } ?>
 
-                            <form method="post">
+                            <form method="post" action="./backend/session_login.php">
                                 <label>Username <input type="text" name="username" placeholder="Enter your username" required></label><br>
                                 <label>Password <input type="password" name="password" placeholder="Enter your password" required></label><br>
                                 <button type="submit">Login</button>

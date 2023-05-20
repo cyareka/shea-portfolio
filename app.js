@@ -50,9 +50,16 @@ $(document).ready(function() {
         }
     });
 
-    function toggleNav() {
-        const navbarLinks = document.getElementById('navbarLinks');
-        navbarLinks.classList.toggle('show');
+    function redirectToUserPage() {
+        window.location.href = "user_index.php";
+    }
+      
+    function redirectToAdminPage() {
+        window.location.href = "admin_index.php";
+    }
+      
+    function redirectToGuestPage() {
+        window.location.href = "guest_index.php";
     }
 });
 
