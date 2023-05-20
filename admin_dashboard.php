@@ -55,7 +55,9 @@ if (!isset($_SESSION['username'])) {
         }
         @media only screen and (max-width: 767px) {
             [class*="col-"]{ width: 100%; padding: 0; }
-            #nav .col-2 { width: 0%; }  
+            #nav .col-2 { width: 0%; } 
+            .proj-grid form { padding: 20px; } 
+            h1 { text-align: center; }
         }
         p, h1 {
             color: #E0E0E0;
@@ -121,7 +123,7 @@ if (!isset($_SESSION['username'])) {
             width: 100%; 
             left: 0; 
         }
-        button {
+        button, .btn {
             padding: 2px 10px;
             border: 0;
             outline: 0;
@@ -133,19 +135,33 @@ if (!isset($_SESSION['username'])) {
             transition: background-color 0.5s ease;
             font-size: 14px;
         }
-        button:active {
+        button:active, .btn:active {
             margin-top: 1px;
         }
-        button:hover {
+        .btn-primary {
+            background-color: #72865d;
+        }
+        button:hover, .btn:hover {
             background-color: #3a1d06;
             box-shadow: 0 0 20px #5f300a;
         }
-        form button {
+        .btn-primary:hover {
+            background-color: #333D29;
+            box-shadow: 0 0 20px #333D29;
+            transition: background-color 0.5s ease;
+        }
+        .proj-grid form button {
             float: right;
+            width: 100px;
         }
         form button:active {
-            margin-top: 18px;
+            margin-top: 3px;
         }   
+        input {
+            margin-bottom: 20px;
+        }
+        table.table-bordered > thead > tr > th { border: 1px solid #a9a9a9; }
+        .table-responsive { overflow: auto; }
     </style>
 </head>
 <body>
@@ -168,37 +184,83 @@ if (!isset($_SESSION['username'])) {
             </div>
         <div class="col-2"></div>
     </div>
-    <div id="proj-dash">
+    <div class="col-2"></div>
+    <div id="proj-dash" class="col-8">
         <div class="heading" style="margin-top: 70px;">
-            <div class="col-2"></div>
-            <h1 class="col-8" style="font-size: 64px;
-    line-height: 1;"><span style="color: #a4ac86">dash</span>board</h1>
-            <div class="col-2"></div>
+            <h1 style="font-size: 64px;
+            line-height: 1;"><span style="color: #a4ac86">dash</span>board</h1>
         </div>
-        <div class="proj-add" style="color: #e0e0e0">
-            <div class="col-2"></div>
-                <div class="proj-grid col-8" style="display: flex; flex-direction: column;">
-                    <form action="add.php" method="post">
-                        <label for="proj_image">Project Image</label>
-                            <input type="file" name="proj_image" id="proj_image" required>
-                        <label for="proj_title">Project Title</label>
-                            <input type="text" name="proj_title" id="proj_title" required>
-                        <label for="proj_url">Project Url</label>
-                            <input type="url" name="proj_url" id="proj_url" required>
-                        <label for="proj_desc">Project Description</label>
-                            <input type="text" name="proj_desc" id="proj_desc" required>
-                        <button type="submit" name="submit" id="add">add</button>
-                    </form>
-                </div>
-                <div class="col-2"></div>
+        <div class="proj-add" style="color: #e0e0e0;">
+            <div class="proj-grid">
+                <?php  if (isset($errorMessage)) { ?>
+                <p><?= $errorMessage; ?></p>
+                <?php } ?>
+                <form action="./backend/add.php" method="post" style="display: flex; flex-direction: column; justify-content: flex-start; margin: 20px 0 20px 0;" enctype="multipart/form-data">
+                    <label for="proj_image">Project Image</label>
+                        <input type="file" name="proj_image" id="proj_image" required>
+                    <label for="proj_title">Project Title</label>
+                        <input type="text" name="proj_title" id="proj_title" required>
+                    <label for="proj_link">Project Link</label>
+                        <input type="url" name="proj_link" id="proj_link" required>
+                    <label for="proj_desc">Project Description</label>
+                        <input type="text" name="proj_desc" id="proj_desc" required>
+                    <button type="submit" name="add" id="add">add</button>
+                </form>
             </div>
+        </div>
         <div class="proj-display">
-            <div class="col-2"></div>
-            <div class="proj_table col-8">
+            <div class="proj_table">
+                <table class="table table-responsive" style="background-color: #0e0e0e; color: #e0e0e0; border-radius: 5px; padding: 10px;">
+                    <thead>
+                    <tr>
+                        <th scope="col">Project Id</th>
+                        <th scope="col">Project Image</th>
+                        <th scope="col">Project Title</th>
+                        <th scope="col">Project Link</th>
+                        <th scope="col">Project Description</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                            require_once('./backend/config.php');
+                            $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+                            if (!$conn) {
+                                die("Connection failed: " . mysqli_connect_error());
+                            }
+
+                            $sql_query = "SELECT * FROM project";
+                            if ($result = $conn ->query($sql_query)) {
+                                while ($row = $result -> fetch_assoc()) { 
+                                    $proj_id = $row['proj_id'];
+                                    $proj_image = $row['proj_image'];
+                                    $proj_title = $row['proj_title'];
+                                    $proj_link = $row['proj_link'];
+                                    $proj_desc = $row['proj_desc'];
+                        ?>
+                        
+                        <tr class="trow">
+                            <td><?php echo $proj_id; ?></td>
+                            <td><?php echo $proj_image; ?></td>
+                            <td><?php echo $proj_title; ?></td>
+                            <td><?php echo $proj_link; ?></td>
+                            <td><?php echo $proj_desc; ?></td>
+                            <td><a href="update.php?proj_id=<?php echo $proj_id; ?>" class="btn btn-primary">Edit</a></td>
+                            <td><a href="./backend/delete.php?proj_id=<?php echo $proj_id; ?>" class="btn btn-danger">Delete</a></td>
+                        </tr>
+
+                        <?php
+                                } 
+                            } 
+                        ?>
+                    </tbody>
+                </table>
             </div>
-            <div class="col-2"></div>
         </div>
     </div>
+    <div class="col-2"></div>
 </div>
 </body>
 </html>

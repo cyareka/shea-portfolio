@@ -1,22 +1,50 @@
 <?php
-    require_once('config.php');
+require_once('config.php');
 
-    if (isset($_POST['add'])){
+$conn = mysqli_connect($servername, $username, $password, $dbname);
 
-        $proj_image = $_POST['proj_image'];
-        $proj_title = $_POST['proj_desc'];
-        $proj_url = $_POST['proj_url'];
-        $proj_desc = $_POST['proj_desc'];
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
-        if($$image != null && $proj_title != "" && $proj_url != "" && $proj_desc != ""){
-            $sql = "INSERT INTO projects (`proj_image`, `proj_title`, `proj_url`, `proj_desc`) VALUES ('$proj_image', '$proj_title', $proj_url, $proj_desc)";
-            if (mysqli_query($conn, $sql)) {
-                header("location: ../admin_dashboard.php");
+if (isset($_POST['add'])) {
+    $proj_title = $_POST['proj_title'];
+    $proj_link = $_POST['proj_link'];
+    $proj_desc = $_POST['proj_desc'];
+
+    if (isset($_FILES['proj_image']) && $_FILES['proj_image']['error'] === UPLOAD_ERR_OK) {
+        $file = $_FILES['proj_image'];
+
+        $allowedExtensions = ['jpg', 'jpeg', 'png'];
+        $fileExtension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+
+        if (in_array($fileExtension, $allowedExtensions)) {
+            // Validate file size
+            $maxFileSize = 2 * 1024 * 1024; // Maximum file size in bytes (2MB)
+            if ($file['size'] <= $maxFileSize) {
+                $fileName = uniqid() . '.' . $fileExtension;
+                $filePath = '../upload/' . $fileName;
+
+                if (move_uploaded_file($file['tmp_name'], $filePath)) {
+                    $sql = "INSERT INTO project (`proj_image`, `proj_title`, `proj_link`, `proj_desc`) VALUES ('$fileName', '$proj_title', '$proj_link', '$proj_desc')";
+                    if (mysqli_query($conn, $sql)) {
+                        header("location: ../admin_dashboard.php");
+                        echo "Successfully Added.";
+                        exit;
+                    } else {
+                        echo "Something went wrong. Please try again later.";
+                    }
+                } else {
+                    echo "Error moving the uploaded file.";
+                }
             } else {
-                 echo "Something went wrong. Please try again later.";
+                echo "File size exceeds the allowed limit.";
             }
-        }else{
-            echo "Name, Class and Marks cannot be empty!";
+        } else {
+            echo "Invalid file type. Only JPG, JPEG, and PNG files are allowed.";
         }
+    } else {
+        echo "No file was uploaded or an error occurred during upload.";
     }
+}
 ?>

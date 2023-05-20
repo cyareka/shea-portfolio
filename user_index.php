@@ -198,7 +198,6 @@ if (!isset($_SESSION['username'])) {
         </div>
         <div class="col-2"></div>
     </div>
-</div>
-
+</div
 </body>
 </html>
