@@ -13,6 +13,6 @@
         echo "Successfully deleted.";
         header("location: ../admin_dashboard.php");
     } else {
-         echo "Something went wrong. Please try again later.";
+        echo "Something went wrong. Please try again later.";
     }
 ?>
