@@ -2,7 +2,6 @@
 session_start();
 
 if (isset($_SESSION['username'])) {
-    // User is already logged in, redirect to the appropriate page
     if ($_SESSION['type'] == 'user') {
         header("Location: user_index#home.php");
     } else if ($_SESSION['type'] == 'admin') {
@@ -66,7 +65,7 @@ if (isset($_SESSION['username'])) {
     
             <div class="socials">
                 <a href="https://github.com/cyareka" target="_blank"><img src="./img/icons8-github-50.png"></a>
-                <a href="" target="_blank"><img src="./img/icons8-discord-new-50.png"></a>
+                <a href="https://discord.com/users/581852432498294784" target="_blank"><img src="./img/icons8-discord-new-50.png"></a>
                 <a href="https://instagr.am/uvraes" target="_blank"><img src="./img/icons8-instagram-50.png"></a>
             </div>
         </div>
@@ -88,7 +87,7 @@ if (isset($_SESSION['username'])) {
                     <h2>YOU CAN ALSO FIND ME ON</h2>
                     <div class="socials">
                         <a href="https://github.com/cyareka" target="_blank"><img src="./img/icons8-github-50.png"></a>
-                        <a href="" target="_blank"><img src="./img/icons8-discord-new-50.png"></a>
+                        <a href="https://discord.com/users/581852432498294784" target="_blank"><img src="./img/icons8-discord-new-50.png"></a>
                         <a href="https://instagr.am/uvraes" target="_blank"><img src="./img/icons8-instagram-50.png"></a>
                     </div>
                 </div>
@@ -97,6 +96,36 @@ if (isset($_SESSION['username'])) {
                 <?php if (isset($errorMessage)) { ?>
                     <p><?= $errorMessage; ?></p>
                     <?php } ?>
+
+                <?php
+                    require_once('./backend/config.php');
+
+                    $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+                    if (!$conn) {
+                        die("Connection failed: " . mysqli_connect_error());
+                    }
+
+                    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                        $name = $_POST['name'];
+                        $email = $_POST['email'];
+                        $msg = $_POST['msg'];
+
+                        $stmt = $conn->prepare("INSERT INTO contactmsg (msg_name, msg_email, msg_content) VALUES (?, ?, ?)");
+
+                        $stmt->bind_param("sss", $name, $email, $msg);
+
+                        if ($stmt->execute()) {
+                            header("Location: success.php");
+                            exit;
+                        } else {
+                            echo "Something went wrong. Please try again later.";
+                        }
+
+                        $stmt->close();
+                        $conn->close();
+                    }
+                ?>
                 <form method="post">
                     <label>name</label>
                     <input type="text" name="name" placeholder="Enter your name" required>
@@ -111,6 +140,5 @@ if (isset($_SESSION['username'])) {
         <div class="col-2"></div>
     </div>
 </div>
-
 </body>
 </html>

@@ -26,7 +26,6 @@
         )"; 
     
     $contactmsg = "CREATE TABLE contactmsg (
-        msg_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
         msg_name VARCHAR(30) NOT NULL,
         msg_email VARCHAR(30) NOT NULL,
         msg_content VARCHAR(1000) NOT NULL,

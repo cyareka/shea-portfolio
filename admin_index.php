@@ -1,14 +1,43 @@
 <?php
-session_start();
+    session_start();
 
-if (!isset($_SESSION['username'])) {
-    header("Location: guest_index.php");
-    header("Cache-Control: no-cache, no-store, must-revalidate");
-    header("Pragma: no-cache");
-    header("Expires: 0");
-    header("Referrer-Policy: no-referrer");
-    exit;
-}
+    if (!isset($_SESSION['username'])) {
+        header("Location: guest_index.php");
+        header("Cache-Control: no-cache, no-store, must-revalidate");
+        header("Pragma: no-cache");
+        header("Expires: 0");
+        header("Referrer-Policy: no-referrer");
+        exit;
+    }
+
+    require_once('./backend/config.php');
+
+    $username = "root";
+
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+    if (!$conn) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+    
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $msg = $_POST['msg'];
+
+        $stmt = $conn->prepare("INSERT INTO contactmsg (msg_name, msg_email, msg_content) VALUES (?, ?, ?)");
+
+        $stmt->bind_param("sss", $name, $email, $msg);
+        
+        if ($stmt->execute()) {
+            header("Location: success.php");
+            exit;
+        } else {
+            $errorMessage = "Something went wrong. Please try again later.";
+        } 
+        $stmt->close();
+        $conn->close();
+    } 
 ?>
 
 <!DOCTYPE html>
@@ -60,7 +89,7 @@ if (!isset($_SESSION['username'])) {
     
             <div class="socials hide">
                 <a href="https://github.com/cyareka" target="_blank"><img src="./img/icons8-github-50.png"></a>
-                <a href="" target="_blank"><img src="./img/icons8-discord-new-50.png"></a>
+                <a href="https://discord.com/users/581852432498294784" target="_blank"><img src="./img/icons8-discord-new-50.png"></a>
                 <a href="https://instagr.am/uvraes" target="_blank"><img src="./img/icons8-instagram-50.png"></a>
             </div>
         </div>
@@ -127,6 +156,7 @@ if (!isset($_SESSION['username'])) {
             <?php
                 require_once('./backend/config.php');
 
+                $username = 'root';
                 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
                 if (!$conn) {
@@ -164,7 +194,6 @@ if (!isset($_SESSION['username'])) {
     <div id="contact">
         <div class="col-2"></div>
         <div class="con-content col-8">
-        
             <div class="con-box-1">
                 <h1>let's get <span>in touch!</span></h1>
                 <div class="con-box-1-con">
@@ -176,45 +205,17 @@ if (!isset($_SESSION['username'])) {
                     <h2>YOU CAN ALSO FIND ME ON</h2>
                     <div class="socials">
                         <a href="https://github.com/cyareka" target="_blank"><img src="./img/icons8-github-50.png"></a>
-                        <a href="" target="_blank"><img src="./img/icons8-discord-new-50.png"></a>
+                        <a href="https://discord.com/users/581852432498294784" target="_blank"><img src="./img/icons8-discord-new-50.png"></a>
                         <a href="https://instagr.am/uvraes" target="_blank"><img src="./img/icons8-instagram-50.png"></a>
                     </div>
                 </div>
             </div>
             <div class="con-box-2">
                 <?php 
-                    $hostname = 'localhost';
-                    $username = 'root';
-                    $password = '';
-                    $database = 'db_fernandez';
-    
-                    $conn = new mysqli($hostname, $username, $password, $database);
-    
-                    if ($conn->connect_error) {
-                        die("Connection failed: " . $conn->connect_error);
-                    }
-
-                    if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        
-                        $name = $_POST['name'];
-                        $email = $_POST['email'];
-                        $msg = $_POST['msg'];
-
-                        $sql = "INSERT INTO contactmsg (msg_name, msg_email, msg_content) VALUES ('$name', '$email', '$msg')";
-        
-                        if ($conn->query($sql) === true) {
-                            $message = 'Data added successfully';
-                            error_log($message);
-                            header('user_index#contact.php');
-                        } else {
-                            $message = "Error: " . $sql . "<br>" . $conn->error;
-                            error_log($message);
-                        }
-                        $conn->close();
-                    }
                 if (isset($errorMessage)) { ?>
                     <p><?= $errorMessage; ?></p>
                     <?php } ?>
+
                 <form method="post">
                     <label>name</label>
                     <input type="text" name="name" placeholder="Enter your name" required>
@@ -229,6 +230,5 @@ if (!isset($_SESSION['username'])) {
         <div class="col-2"></div>
     </div>
 </div>
-
 </body>
 </html>

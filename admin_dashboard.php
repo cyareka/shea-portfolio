@@ -19,12 +19,10 @@ if (!isset($_SESSION['username'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>dashboard | arde</title>
 
-    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="apple-touch-icon" sizes="180x180" href="./img/favicon_io/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="./img/favicon_io/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="./img/favicon_io/favicon-16x16.png">
-    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"> -->
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="app.js"></script>
@@ -161,7 +159,6 @@ if (!isset($_SESSION['username'])) {
             margin-bottom: 20px;
         }
         table.table-bordered > thead > tr > th { border: 1px solid #a9a9a9; }
-        .table-responsive { overflow: auto; }
     </style>
 </head>
 <body>
@@ -209,8 +206,8 @@ if (!isset($_SESSION['username'])) {
             </div>
         </div>
         <div class="proj-display">
-            <div class="proj_table">
-                <table class="table table-responsive" style="background-color: #0e0e0e; color: #e0e0e0; border-radius: 5px; padding: 10px;">
+            <div class="proj_table table-responsive">
+                <table class="table" style="background-color: #0e0e0e; color: #e0e0e0; border-radius: 5px; padding: 10px;">
                     <thead>
                     <tr>
                         <th scope="col">Project Id</th>
@@ -247,7 +244,7 @@ if (!isset($_SESSION['username'])) {
                             <td><?php echo $proj_title; ?></td>
                             <td><?php echo $proj_link; ?></td>
                             <td><?php echo $proj_desc; ?></td>
-                            <td><a href="update.php?proj_id=<?php echo $proj_id; ?>" class="btn btn-primary">Edit</a></td>
+                            <td><a href="update_form.php?proj_id=<?php echo $proj_id; ?>" class="btn btn-primary">Edit</a></td>
                             <td><a href="./backend/delete.php?proj_id=<?php echo $proj_id; ?>" class="btn btn-danger">Delete</a></td>
                         </tr>
 
