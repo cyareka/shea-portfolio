@@ -121,42 +121,39 @@ if (!isset($_SESSION['username'])) {
         <div class="proj-content">
             <div class="col-2"></div>
             <div class="proj-grid col-8">
-                <div class="grid" style="background-image: url('./img/wangsheng.png')">
-                    <div class="grid-txt">
-                        <h3><a href="https://cyareka.github.io/wangsheng-funeral-parlor/" target="_blank">Wangsheng Funeral Parlor</a></h3>
-                        <p>A prerequisite project for The Odin Project</p>
-                    </div>
-                </div>
-                <div class="grid" style="background-image: url('./img/ar.png')">
-                    <div class="grid-txt">
-                        <h3><a href="https://github.com/cyareka/ar-calculator" target="_blank">Genshin Impact AR Calculator</a></h3>
-                        <p>Calculate AR EXP needed and est. date of reaching that AR</p>
-                    </div>
-                </div>
-                <div class="grid" style="background-image: url('./img/pangandam.png')" style="filter: grayscale(100%)">
-                    <div class="grid-txt">
-                        <h3><a href="https://github.com/cyareka/pangandam" target="_blank">Pangandam</a></h3>
-                        <p>A disaster inventory management system</p>
-                    </div>
-                </div>
-                <div class="grid" style="background-image: url('./img/mps.png')">
-                    <div class="grid-txt">
-                        <h3><a href="https://github.com/cyareka/mealplan" target="_blank">Meal Plan System</a></h3>
-                        <p>Data Structures project for simple tracking of meals</p>
-                    </div>
-                </div>
-                <div class="grid" style="background-image: url('./img/flames.jpg')">
-                    <div class="grid-txt">
-                        <h3><a href="https://github.com/cyareka/flames-game" target="_blank">FLAMES Game</a></h3>
-                        <p>Implementation of everyone's childhood game</p>
-                    </div>
-                </div>
-                <div class="grid" style="background-image: url('./img/hogwarts.jpg')">
-                    <div class="grid-txt">
-                        <h3><a href="https://github.com/cyareka/hogwarts-alumni" target="_blank">Hogwarts Alumni</a></h3>
-                        <p>Alumni record written in Java with a Harry Potter theme.</p>
-                    </div>
-                </div>
+            <?php
+                require_once('./backend/config.php');
+
+                $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+                if (!$conn) {
+                    die("Connection failed: " . mysqli_connect_error());
+                }
+
+                $query = "SELECT * FROM project ORDER BY proj_id";
+                $result = mysqli_query($conn, $query);
+
+                if (!$result) {
+                    die("Query failed: " . mysqli_error($conn));
+                }
+
+                while ($project = mysqli_fetch_assoc($result)) {
+                    $proj_image = $project['proj_image'];
+                    $proj_title = $project['proj_title'];
+                    $proj_link = $project['proj_link'];
+                    $proj_desc = $project['proj_desc'];
+
+                    $imageFilePath = './upload/' . $proj_image;
+
+                    echo '<div class="grid" style="background-image: url(\'' . $imageFilePath . '\')">';
+                        echo '<div class="grid-txt">';
+                            echo '<h3><a href="' . $proj_link . '" target="_blank">' . $proj_title . '</a></h3>';
+                            echo '<p>' . $proj_desc . '</p>';
+                        echo '</div>';
+                    echo '</div>';
+                }
+                mysqli_close($conn);
+                ?>
             </div>
         </div>
         <div class="col-2"></div>
