@@ -255,6 +255,54 @@ if (!isset($_SESSION['username'])) {
                     </tbody>
                 </table>
             </div>
+            <div class="heading" style="margin-top: 70px; margin-bottom: 30px;">
+            <h1 style="font-size: 64px;
+            line-height: 1;"><span style="color: #a4ac86">in</span>box</h1>
+            </div>
+            <div class="inbox table-responsive">
+            <table class="table" style="background-color: #0e0e0e; color: #e0e0e0; border-radius: 5px; padding: 10px;">
+                    <thead>
+                    <tr>
+                        <th scope="col">Sender</th>
+                        <th scope="col">Sender E-mail</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Date Sent</th>
+                        <th scope="col">Delete</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                            require_once('./backend/config.php');
+                            $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+                            if (!$conn) {
+                                die("Connection failed: " . mysqli_connect_error());
+                            }
+
+                            $sql_query = "SELECT * FROM contactmsg";
+                            if ($result = $conn ->query($sql_query)) {
+                                while ($row = $result -> fetch_assoc()) { 
+                                    $msg_name = $row['msg_name'];
+                                    $msg_email = $row['msg_email'];
+                                    $msg_content = $row['msg_content'];
+                                    $date_added = $row['date_added'];
+                        ?>
+                        
+                        <tr class="trow">
+                            <td><?php echo $msg_name; ?></td>
+                            <td><?php echo $msg_email; ?></td>
+                            <td><?php echo $msg_content; ?></td>
+                            <td><?php echo $date_added; ?></td>
+                            <td><a href="./backend/delete_msg.php?msg_email=<?php echo $msg_email; ?>" class="btn btn-danger">Delete</a></td>
+                        </tr>
+
+                        <?php
+                                } 
+                            } 
+                        ?>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <div class="col-2"></div>

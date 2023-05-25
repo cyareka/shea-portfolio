@@ -152,6 +152,7 @@
             <?php
                 require_once('./backend/config.php');
 
+                $username = 'root';
                 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
                 if (!$conn) {

@@ -49,18 +49,6 @@ $(document).ready(function() {
             login_form.style.display = "none";
         }
     });
-
-    function redirectToUserPage() {
-        window.location.href = "user_index.php";
-    }
-      
-    function redirectToAdminPage() {
-        window.location.href = "admin_index.php";
-    }
-      
-    function redirectToGuestPage() {
-        window.location.href = "guest_index.php";
-    }
 });
 
 
